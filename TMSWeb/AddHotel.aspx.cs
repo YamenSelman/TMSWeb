@@ -36,7 +36,6 @@ namespace TMSWeb
                 else
                 {
                     hotel = (Hotel)Session["hotel"];
-                    Session["hotel"] = null;
                 }
                 roomsGrid.DataSource = hotel.Rooms;
                 roomsGrid.DataBind();
@@ -57,6 +56,7 @@ namespace TMSWeb
         {
             fillHotel();
             hotel = Helper.NewHotel(hotel);
+            Session["hotel"] = null;
             Response.Redirect("HotelManager.aspx");
         }
 
@@ -95,6 +95,18 @@ namespace TMSWeb
             capacity.Text = string.Empty;
             rent.Text = string.Empty;
             roomAddCancelBtn_Click(null, null);
+        }
+
+        protected void roomsGrid_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "deleteRoom")
+            {
+                string parameter = e.CommandArgument.ToString();
+                hotel.Rooms.Remove(hotel.Rooms.Where(r => r.Number.Equals(parameter)).FirstOrDefault());
+                roomsGrid.DataBind();
+            }
+            fillHotel();
+            Session["hotel"] = hotel;
         }
     }
 }

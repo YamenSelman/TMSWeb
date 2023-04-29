@@ -43,21 +43,24 @@
                 </div>
                 <div class="col-6 px-5" id="gridCol" runat="server">
                     <div class="mx-auto h-100">
-                        <asp:GridView ID="roomsGrid" CssClass="w-100" runat="server" AutoGenerateColumns="false" DataKeyNames="ID">
-                                                <Columns>
-                        <asp:BoundField DataField="ID" HeaderText="الرقم" ReadOnly="True" Visible="false" SortExpression="ID" />
-                        <asp:BoundField DataField="Number" HeaderText="رقم الغرفة" SortExpression="Number" HeaderStyle-CssClass="visible-lg" ItemStyle-CssClass="visible-lg" />
-                        <asp:BoundField DataField="Capacity" HeaderText="سعة الغرفة" SortExpression="Capacity" HeaderStyle-CssClass="visible-lg" ItemStyle-CssClass="visible-lg" />
-                        <asp:BoundField DataField="Rent" HeaderText="السعر" SortExpression="Rent" ItemStyle-CssClass="visible-xs" HeaderStyle-CssClass="visible-xs" />
-                        <asp:TemplateField HeaderText="" HeaderStyle-CssClass="visible-md" ItemStyle-CssClass="visible-md">
-                            <ItemTemplate>
-                                <a href='RoomDetails.aspx?ID=<%#Eval("ID") %>'><i class="fa fa-eye text-white"></i></a>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
+                        <asp:GridView ID="roomsGrid" CssClass="w-100" runat="server" AutoGenerateColumns="false" DataKeyNames="ID" OnRowCommand="roomsGrid_RowCommand">
+                            <Columns>
+                                <asp:BoundField DataField="ID" HeaderText="الرقم" ReadOnly="True" Visible="false" SortExpression="ID" />
+                                <asp:BoundField DataField="Number" HeaderText="رقم الغرفة" SortExpression="Number" HeaderStyle-CssClass="visible-lg" ItemStyle-CssClass="visible-lg" />
+                                <asp:BoundField DataField="Capacity" HeaderText="سعة الغرفة" SortExpression="Capacity" HeaderStyle-CssClass="visible-lg" ItemStyle-CssClass="visible-lg" />
+                                <asp:BoundField DataField="Rent" HeaderText="السعر" SortExpression="Rent" ItemStyle-CssClass="visible-xs" HeaderStyle-CssClass="visible-xs" />
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="LinkButton" runat="server" CommandArgument='<%#Eval("Number") %>' CommandName="deleteRoom" OnClientClick="return confirm('تأكيد حذف الغرفة !؟')"><i class="fa fa-trash text-white"></i></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
                         </asp:GridView>
 
-                        <asp:Button ID="roomAddBtn" runat="server" Text="إضافة غرفة" OnClick="roomAddBtn_Click" CssClass="btn btn-outline-primary w-25 shadow-lg btn-lg" />
+
+
+                        <div class="btn-group-lg p-2 text-center">
+                            <asp:Button ID="roomAddBtn" runat="server" Text="إضافة غرفة" OnClick="roomAddBtn_Click" CssClass="btn btn-outline-primary w-25 fw-bold shadow-lg btn-lg" />                        </div>
                     </div>
                 </div>
                 <div class="col-6 px-5" id="addCol" runat="server" visible="false">
@@ -70,15 +73,17 @@
                         <asp:TextBox ID="capacity" runat="server" type="number" CssClass="form-control"></asp:TextBox>
                         <label for="rent">السعر</label>
                         <asp:TextBox ID="rent" runat="server" type="number" CssClass="form-control"></asp:TextBox>
-                        <asp:Button ID="roomAddSaveBtn" runat="server" Text="حفظ" OnClick="roomAddSaveBtn_Click" CssClass="btn btn-primary" />
-                        <asp:Button ID="roomAddCancelBtn" runat="server" Text="إلغاء" OnClick="roomAddCancelBtn_Click" CssClass="btn btn-danger" />
+                        <div class="btn-group-lg p-2 text-center">
+                            <asp:Button ID="roomAddSaveBtn" runat="server" Text="حفظ" OnClick="roomAddSaveBtn_Click" CssClass="btn btn-outline-primary fw-bold" />
+                            <asp:Button ID="roomAddCancelBtn" runat="server" Text="إلغاء" OnClick="roomAddCancelBtn_Click" CssClass="btn btn-outline-danger fw-bold" />
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="text-center pt-5">
-                <asp:Button ID="saveHotelBtn" runat="server" OnClick="saveHotelBtn_Click" CssClass="btn btn-outline-primary w-25 shadow-lg btn-lg" Text="حفظ" />
-                <a href="HotelManager.aspx" class="btn btn-outline-danger w-25 shadow-lg btn-lg">إلغاء</a>
+                <asp:Button ID="saveHotelBtn" runat="server" OnClick="saveHotelBtn_Click" CssClass="btn btn-outline-primary w-25 shadow-lg fw-bold btn-lg" Text="حفظ" />
+                <a href="HotelManager.aspx" class="btn btn-outline-danger w-25 shadow-lg fw-bold btn-lg">إلغاء</a>
             </div>
 
         </div>

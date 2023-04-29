@@ -22,9 +22,9 @@
 
 
                 <div class="text-center text-lg-start mt-4 pt-2">
-                    <asp:Button ID="loginBtn" runat="server" Text="دخول" OnClick="loginBtn_Click" type="button" class="btn btn-success"
+                    <asp:Button ID="loginBtn" runat="server" Text="دخول" OnClick="loginBtn_Click" type="button" class="btn btn-outline-success fw-bold shadow-lg"
                         Style="padding-left: 2.5rem; padding-right: 2.5rem;" />
-                    <a href="Register.aspx" class="btn btn-light"
+                    <a href="Register.aspx" class="btn btn-outline-light fw-bold shadow-lg"
                         Style="padding-left: 2.5rem; padding-right: 2.5rem;">حساب جديد</a>
                 </div>
 
