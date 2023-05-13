@@ -142,9 +142,12 @@
     <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Home.aspx" />
+    <Content Include="HotelReservation.aspx" />
     <Content Include="img\Bg.png" />
     <Content Include="img\Front.png" />
     <Content Include="Register.aspx" />
+    <Content Include="RegisterSuccess.aspx" />
+    <Content Include="RoomReservation.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -178,6 +181,7 @@
     <Content Include="AddHotel.aspx" />
     <Content Include="UserDetails.aspx" />
     <Content Include="UserManager.aspx" />
+    <Content Include="UserPage.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -246,6 +250,13 @@
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
+    <Compile Include="HotelReservation.aspx.cs">
+      <DependentUpon>HotelReservation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HotelReservation.aspx.designer.cs">
+      <DependentUpon>HotelReservation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Airport.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\CarCompany.cs" />
@@ -265,10 +276,24 @@
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="RegisterSuccess.aspx.cs">
+      <DependentUpon>RegisterSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegisterSuccess.aspx.designer.cs">
+      <DependentUpon>RegisterSuccess.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Lang-AR.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Lang-AR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RoomReservation.aspx.cs">
+      <DependentUpon>RoomReservation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RoomReservation.aspx.designer.cs">
+      <DependentUpon>RoomReservation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -311,6 +336,13 @@
     </Compile>
     <Compile Include="UserManager.aspx.designer.cs">
       <DependentUpon>UserManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPage.aspx.cs">
+      <DependentUpon>UserPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPage.aspx.designer.cs">
+      <DependentUpon>UserPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
@@ -355,7 +387,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:65421/</IISUrl>
+          <IISUrl>http://localhost:58792/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

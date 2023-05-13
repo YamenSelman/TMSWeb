@@ -24,7 +24,7 @@
 <body class="d-flex flex-column min-vh-100 bg bg-light" style="background-image: url('img/front.png'); background-position: center; background-repeat: no-repeat; background-size: cover">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a id="homeLink" runat="server" class="navbar-brand" href="#">BeHappy.com</a>
+            <a id="homeLink" runat="server" class="navbar-brand" href="Home.aspx">BeHappy.com</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

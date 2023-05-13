@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.DynamicData;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TMSAPI.Models;
@@ -22,6 +23,7 @@ namespace TMSWeb
                 if (!IsPostBack)
                 {
                     List<User> users = Helper.getAllUsers();
+                    users.RemoveAll(u => u.Role.Equals("admin"));
                     companyManager.DataSource = users;
                     companyManager.DataValueField = "ID";
                     companyManager.DataTextField = "Name";
@@ -31,12 +33,14 @@ namespace TMSWeb
                     company = new CarCompany();
                     company.Cars = new List<Car>();
 
+                    cityDD.DataSource = Helper.Cities;
+                    cityDD.DataBind();
+
                     Session["carCompany"] = company;
                 }
                 else
                 {
                     company = (CarCompany)Session["carCompany"];
-                    Session["carCompany"] = null;
                 }
                 carsGrid.DataSource = company.Cars;
                 carsGrid.DataBind();
@@ -49,14 +53,19 @@ namespace TMSWeb
             company.Description = companyDesc.Text;
             company.PhoneNumber = phoneNumber.Text;
             company.Email = email.Text;
+            company.City = cityDD.Text;
             company.AccountNumber = accountNumber.Text;
-            company.ManagerId = Int32.Parse(companyManager.SelectedValue);
+            if(Int32.TryParse(companyManager.SelectedValue,out _))
+            {
+                company.ManagerId = Int32.Parse(companyManager.SelectedValue);
+            }
         }
 
         protected void saveCarCompanyBtn_Click(object sender, EventArgs e)
         {
             fillCompany();
-            company = Helper.NewCarCompany(company);
+            company = Helper.NewCarCompany(company);                    Session["carCompany"] = company;
+            Session["carCompany"] = null;
             Response.Redirect("CarCompanyManager.aspx");
         }
 
@@ -98,6 +107,18 @@ namespace TMSWeb
             year.Text = string.Empty;
             rent.Text = string.Empty;
             carAddCancelBtn_Click(null, null);
+        }
+
+        protected void carsGrid_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "deleteCar")
+            {
+                string parameter = e.CommandArgument.ToString();
+                company.Cars.Remove(company.Cars.Where(c => c.Number.Equals(parameter)).FirstOrDefault());
+                carsGrid.DataBind();
+            }
+            fillCompany();
+            Session["carCompany"] = company;
         }
     }
 }

@@ -24,7 +24,10 @@
                     </Columns>
                 </asp:GridView>
 
-                <a class="btn btn-primary btn-lg" href="AddCarCompany.aspx">إضافة شركة</a>
+                <div class="btn-group-lg p-3 text-center">
+                    <a class="btn btn-outline-light btn-lg shadow-lg" href="AddCarCompany.aspx">إضافة شركة</a>
+                    <a class="btn btn-outline-light btn-lg shadow-lg" href="Administration.aspx">صفحة الإدارة</a>
+                </div>
             </div>
         </div>
     </div>

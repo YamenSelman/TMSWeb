@@ -19,9 +19,10 @@ namespace TMSWeb
             }
             else
             {
-                if(!IsPostBack)
+                if (!IsPostBack)
                 {
                     List<User> users = Helper.getAllUsers();
+                    users.RemoveAll(u => u.Role.Equals("admin"));
                     hotelManager.DataSource = users;
                     hotelManager.DataValueField = "ID";
                     hotelManager.DataTextField = "Name";
@@ -30,6 +31,9 @@ namespace TMSWeb
 
                     hotel = new Hotel();
                     hotel.Rooms = new List<HotelRoom>();
+
+                    cityDD.DataSource = Helper.Cities;
+                    cityDD.DataBind();
 
                     Session["hotel"] = hotel;
                 }
@@ -48,8 +52,12 @@ namespace TMSWeb
             hotel.Description = hotelDesc.Text;
             hotel.PhoneNumber = phoneNmuber.Text;
             hotel.Email = email.Text;
+            hotel.City = cityDD.Text;
             hotel.AccountNumber = accountNumber.Text;
-            hotel.ManagerId = Int32.Parse(hotelManager.SelectedValue);
+            if (Int32.TryParse(hotelManager.SelectedValue, out _))
+            {
+                hotel.ManagerId = Int32.Parse(hotelManager.SelectedValue);
+            }
         }
 
         protected void saveHotelBtn_Click(object sender, EventArgs e)

@@ -14,6 +14,7 @@ namespace TMSAPI.Models
         public string Description { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
+        public string City { get; set; }
         public int? ManagerId { get; set; }
         public User Manager { get; set; }
         public List<HotelRoom> Rooms { get; set; }

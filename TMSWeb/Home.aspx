@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="text-center text-lg-start mt-4 pt-2">
-                    <asp:Button ID="LogoutBtn" runat="server" Text="تسجيل خروج" OnClick="logout" type="button" class="btn btn-dark"
+                    <asp:Button ID="LogoutBtn" runat="server" Text="تسجيل خروج" OnClick="logout" type="button" class="btn btn-outline-dark"
                         Style="padding-left: 2.5rem; padding-right: 2.5rem;" />
                 </div>
 

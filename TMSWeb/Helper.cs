@@ -11,6 +11,7 @@ namespace TMSWeb
     {
         private static string BaseURL = "http://mayanahat23-001-site1.ftempurl.com/api/";
         //private static string BaseURL = "http://localhost:58608/api/";
+        public static List<string> Cities = new List<string> { "Damascus", "Aleppo", "Homs", "Hama", "Swaida", "Lattakia", "Tartous", "Daraa", "Derazzor", "Hasaka", "Qamshly", "Idleb", "Raqqa", "Beirut", "Baghdad", "Amman", "Istanbul", "Abudabi", "Cairo", "Alkhartoum", "Tunis", "Algeria", "Rabat", "Rome", "Paris", "Washington", "Berlin", "Londno", "Tokyo", "Shangahai", "Moscow" };
         public static List<User> getAllUsers()
         {
             List<User> result = new List<User>();
@@ -304,6 +305,53 @@ namespace TMSWeb
                     readTask.Wait();
 
                     result = readTask.Result;
+                }
+            }
+            return result;
+        }
+
+        public static Hotel getHotel(int id)
+        {
+            Hotel result = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseURL);
+                //HTTP GET
+                var task = client.GetAsync($"hotels/{id}");
+                task.Wait();
+
+                var rs = task.Result;
+                if (rs.IsSuccessStatusCode)
+                {
+
+                    var readTask = rs.Content.ReadAsAsync<Hotel>();
+                    readTask.Wait();
+
+                    result = readTask.Result;
+                }
+            }
+            return result;
+        }
+
+        internal static List<HotelRoom> getHotelRooms(int id)
+        {
+            List<HotelRoom> result = new List<HotelRoom>();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseURL);
+                //HTTP GET
+                var task = client.GetAsync("HotelRooms");
+                task.Wait();
+
+                var rs = task.Result;
+                if (rs.IsSuccessStatusCode)
+                {
+
+                    var readTask = rs.Content.ReadAsAsync<HotelRoom[]>();
+                    readTask.Wait();
+
+                    result = readTask.Result.ToList();
+                    return result.Where(r => r.HotelId.Equals(id)).ToList();
                 }
             }
             return result;

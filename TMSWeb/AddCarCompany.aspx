@@ -24,6 +24,10 @@
                 <div class="col-6 px-5">
                     <label for="companyName">اسم الشركة</label>
                     <asp:TextBox ID="companyName" runat="server" CssClass="form-control"></asp:TextBox>
+                    
+                    <label for="cityDD">المدينة</label>
+                    <asp:DropDownList ID="cityDD" runat="server" CssClass="form-control">
+                    </asp:DropDownList>
 
                     <label for="companyDesc">الوصف</label>
                     <asp:TextBox ID="companyDesc" runat="server" CssClass="form-control"></asp:TextBox>
@@ -43,16 +47,16 @@
                 </div>
                 <div class="col-6 px-5" id="gridCol" runat="server">
                     <div class="mx-auto h-100">
-                        <asp:GridView ID="carsGrid" CssClass="w-100" runat="server" AutoGenerateColumns="false" DataKeyNames="ID">
+                        <asp:GridView ID="carsGrid" CssClass="w-100" runat="server" AutoGenerateColumns="false" DataKeyNames="ID"  OnRowCommand="carsGrid_RowCommand">
                             <Columns>
                                 <asp:BoundField DataField="ID" HeaderText="الرقم" ReadOnly="True" Visible="false" SortExpression="ID" />
                                 <asp:BoundField DataField="Number" HeaderText="رقم السيارة" SortExpression="Number" HeaderStyle-CssClass="visible-lg" ItemStyle-CssClass="visible-lg" />
                                 <asp:BoundField DataField="Model" HeaderText="الموديل" SortExpression="Capacity" HeaderStyle-CssClass="visible-lg" ItemStyle-CssClass="visible-lg" />
                                 <asp:BoundField DataField="Year" HeaderText="السنة" SortExpression="Capacity" HeaderStyle-CssClass="visible-lg" ItemStyle-CssClass="visible-lg" />
                                 <asp:BoundField DataField="Rent" HeaderText="السعر" SortExpression="Rent" ItemStyle-CssClass="visible-xs" HeaderStyle-CssClass="visible-xs" />
-                                <asp:TemplateField HeaderText="" HeaderStyle-CssClass="visible-md" ItemStyle-CssClass="visible-md">
+                                <asp:TemplateField>
                                     <ItemTemplate>
-                                        <a href='CarDetails.aspx?ID=<%#Eval("ID") %>'><i class="fa fa-eye text-white"></i></a>
+                                        <asp:LinkButton ID="LinkButton" runat="server" CommandArgument='<%#Eval("Number") %>' CommandName="deleteCar" OnClientClick="return confirm('تأكيد حذف السيارة !؟')"><i class="fa fa-trash text-white"></i></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
@@ -67,7 +71,7 @@
                         <label for="carDesc">الوصف</label>
                         <asp:TextBox ID="carDesc" runat="server" CssClass="form-control"></asp:TextBox>
                         <label for="model">موديل السيارة</label>
-                        <asp:TextBox ID="model" runat="server"  CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="model" runat="server" CssClass="form-control"></asp:TextBox>
                         <label for="year">السنة</label>
                         <asp:TextBox ID="year" runat="server" type="number" CssClass="form-control"></asp:TextBox>
                         <label for="rent">السعر</label>

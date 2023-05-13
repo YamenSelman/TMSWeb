@@ -56,14 +56,18 @@ namespace TMSWeb
                 }
                 else
                 {
+                    Session["user"] = user;
                     if (user.Role.Equals("admin"))
                     {
-                        Session["user"] = user;
                         Response.Redirect("Administration.aspx");
+                    }
+                    else if(user.Role.Equals("customer"))
+                    {
+                        Response.Redirect("UserPage.aspx");
                     }
                     else
                     {
-                        ErrorLBL.Text = $"تم تسجيل دخول المستخدم {user.Name}";
+                        Response.Redirect("Home.aspx");
                     }
                 }
             }

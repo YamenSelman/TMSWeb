@@ -63,7 +63,7 @@ namespace TMSWeb
                 ErrorLBL.Text = "اسم المستخدم موجود مسبقاً";
                 return;
             }
-            usr = users.Where(u => u.Email.ToLower().Equals(emailTB.Value.ToLower())).FirstOrDefault();
+            usr = users.Where(u => (u.Email != null) && (u.Email.ToLower().Equals(emailTB.Value.ToLower()))).FirstOrDefault();
             if (usr != null)
             {
                 ErrorLBL.Text = "البريد الالكتروني موجود مسبقاً";
@@ -82,15 +82,8 @@ namespace TMSWeb
             customer.AccountNumber = accountNumTB.Value;
 
             Customer newCustomer = Helper.NewCustomer(customer);
-            if (newCustomer != null)
-            {
-                ErrorLBL.Text = "All Ok";
 
-            }
-            else
-            {
-                ErrorLBL.Text = "Not good";
-            }
+            Response.Redirect("RegisterSuccess.aspx");
         }
     }
 }

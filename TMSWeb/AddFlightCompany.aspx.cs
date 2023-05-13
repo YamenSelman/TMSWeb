@@ -21,6 +21,7 @@ namespace TMSWeb
                 if (!IsPostBack)
                 {
                     List<User> users = Helper.getAllUsers();
+                    users.RemoveAll(u => u.Role.Equals("admin"));
                     companyManager.DataSource = users;
                     companyManager.DataValueField = "ID";
                     companyManager.DataTextField = "Name";
@@ -38,7 +39,14 @@ namespace TMSWeb
             company.PhoneNumber = phoneNumber.Text;
             company.Email = email.Text;
             company.AccountNumber = accountNumber.Text;
-            company.ManagerId = Int32.Parse(companyManager.SelectedValue);
+            if (Int32.TryParse(companyManager.SelectedValue, out _))
+            {
+                company.ManagerId = Int32.Parse(companyManager.SelectedValue);
+            }
+            else
+            {
+                return;
+            }
             company = Helper.NewFlightCompany(company);
             Response.Redirect("FlightCompanyManager.aspx");
         }

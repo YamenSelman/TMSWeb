@@ -25,6 +25,10 @@
                     <label for="hotelName">اسم الفندق</label>
                     <asp:TextBox ID="hotelName" runat="server" CssClass="form-control"></asp:TextBox>
 
+                    <label for="cityDD">المدينة</label>
+                    <asp:DropDownList ID="cityDD" runat="server" CssClass="form-control">
+                    </asp:DropDownList>
+
                     <label for="hotelDesc">الوصف</label>
                     <asp:TextBox ID="hotelDesc" runat="server" CssClass="form-control"></asp:TextBox>
 
@@ -60,7 +64,8 @@
 
 
                         <div class="btn-group-lg p-2 text-center">
-                            <asp:Button ID="roomAddBtn" runat="server" Text="إضافة غرفة" OnClick="roomAddBtn_Click" CssClass="btn btn-outline-primary w-25 fw-bold shadow-lg btn-lg" />                        </div>
+                            <asp:Button ID="roomAddBtn" runat="server" Text="إضافة غرفة" OnClick="roomAddBtn_Click" CssClass="btn btn-outline-primary w-25 fw-bold shadow-lg btn-lg" />
+                        </div>
                     </div>
                 </div>
                 <div class="col-6 px-5" id="addCol" runat="server" visible="false">
