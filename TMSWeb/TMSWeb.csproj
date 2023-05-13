@@ -110,9 +110,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="AddAirport.aspx" />
     <Content Include="AddCarCompany.aspx" />
     <Content Include="AddFlightCompany.aspx" />
     <Content Include="Administration.aspx" />
+    <Content Include="AirportManager.aspx" />
     <Content Include="CarCompanyManager.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -188,6 +190,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddAirport.aspx.cs">
+      <DependentUpon>AddAirport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddAirport.aspx.designer.cs">
+      <DependentUpon>AddAirport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AddCarCompany.aspx.cs">
       <DependentUpon>AddCarCompany.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -208,6 +217,13 @@
     </Compile>
     <Compile Include="Administration.aspx.designer.cs">
       <DependentUpon>Administration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AirportManager.aspx.cs">
+      <DependentUpon>AirportManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AirportManager.aspx.designer.cs">
+      <DependentUpon>AirportManager.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -387,7 +403,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:58792/</IISUrl>
+          <IISUrl>http://localhost:61865/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -43,7 +43,7 @@ namespace TMSWeb
             else
             {
                 List<User> usres = Helper.getAllUsers();
-                User user = usres.Where(u => u.Name.ToLower().Equals(username.Text.ToLower()) && u.Password.Equals(password.Text)).FirstOrDefault();
+                User user = usres.Where(u => u.Name.ToLower().Equals(username.Text.ToLower()) && u.Password.Equals(Helper.Hash(password.Text))).FirstOrDefault();
                 if (user is null)
                 {
                     ErrorLBL.Text = "فشل تسجيل الدخول";

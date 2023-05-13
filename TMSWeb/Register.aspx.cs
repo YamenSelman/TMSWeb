@@ -73,7 +73,7 @@ namespace TMSWeb
             User user = new User();
             user.Name = userNameTB.Value;
             user.Email = emailTB.Value;
-            user.Password = passwordTB.Value;
+            user.Password = Helper.Hash(passwordTB.Value);
             user.PhoneNumber = phoneTB.Value;
             user.Role = "customer";
 

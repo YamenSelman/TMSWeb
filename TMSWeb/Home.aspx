@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="TMSWeb.Home" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <div>
+    <div>
         <div class="container-fluid pt-1 mt-1">
             <div class="row fs-5 justify-content-center align-items-center w-25 m-5 h-100 rounded-1 bg-dark bg-opacity-25 p-3 text-black-75" id="loginDiv" runat="server">
                 <div class="divider align-items-center fs-3 fw-bold text-center py-3">
@@ -17,7 +18,6 @@
                 <div class="form-outline mb-3">
                     <label class="form-label fw-bold" for="password">كلمة المرور</label>
                     <asp:TextBox type="password" ID="password" runat="server" class="form-control form-control-lg" />
-
                 </div>
 
 
@@ -25,7 +25,7 @@
                     <asp:Button ID="loginBtn" runat="server" Text="دخول" OnClick="loginBtn_Click" type="button" class="btn btn-outline-success fw-bold shadow-lg"
                         Style="padding-left: 2.5rem; padding-right: 2.5rem;" />
                     <a href="Register.aspx" class="btn btn-outline-light fw-bold shadow-lg"
-                        Style="padding-left: 2.5rem; padding-right: 2.5rem;">حساب جديد</a>
+                        style="padding-left: 2.5rem; padding-right: 2.5rem;">حساب جديد</a>
                 </div>
 
                 <div class="text-center text-lg-end mt-2 pt-2 text-danger fw-bold">

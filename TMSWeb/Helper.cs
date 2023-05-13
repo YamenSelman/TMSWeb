@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using TMSAPI.Models;
 
@@ -12,6 +14,20 @@ namespace TMSWeb
         private static string BaseURL = "http://mayanahat23-001-site1.ftempurl.com/api/";
         //private static string BaseURL = "http://localhost:58608/api/";
         public static List<string> Cities = new List<string> { "Damascus", "Aleppo", "Homs", "Hama", "Swaida", "Lattakia", "Tartous", "Daraa", "Derazzor", "Hasaka", "Qamshly", "Idleb", "Raqqa", "Beirut", "Baghdad", "Amman", "Istanbul", "Abudabi", "Cairo", "Alkhartoum", "Tunis", "Algeria", "Rabat", "Rome", "Paris", "Washington", "Berlin", "Londno", "Tokyo", "Shangahai", "Moscow" };
+
+        public static string Hash(string rawData)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
         public static List<User> getAllUsers()
         {
             List<User> result = new List<User>();
@@ -202,7 +218,7 @@ namespace TMSWeb
             return result;
         }
 
-        internal static List<FlightCompany> getAllFlightCompanies()
+        public static List<FlightCompany> getAllFlightCompanies()
         {
             List<FlightCompany> result = new List<FlightCompany>();
             using (var client = new HttpClient())
@@ -223,8 +239,8 @@ namespace TMSWeb
                 }
             }
             return result;
-        }       
-        internal static List<CarCompany> getAllCarCompanies()
+        }
+        public static List<CarCompany> getAllCarCompanies()
         {
             List<CarCompany> result = new List<CarCompany>();
             using (var client = new HttpClient())
@@ -333,7 +349,7 @@ namespace TMSWeb
             return result;
         }
 
-        internal static List<HotelRoom> getHotelRooms(int id)
+        public static List<HotelRoom> getHotelRooms(int id)
         {
             List<HotelRoom> result = new List<HotelRoom>();
             using (var client = new HttpClient())
@@ -355,6 +371,49 @@ namespace TMSWeb
                 }
             }
             return result;
+        }
+
+        public static List<Airport> getAllAirports()
+        {
+            List<Airport> result = new List<Airport>();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseURL);
+                //HTTP GET
+                var task = client.GetAsync("Airports");
+                task.Wait();
+
+                var rs = task.Result;
+                if (rs.IsSuccessStatusCode)
+                {
+
+                    var readTask = rs.Content.ReadAsAsync<Airport[]>();
+                    readTask.Wait();
+
+                    result = readTask.Result.ToList();
+                }
+            }
+            return result;
+        }
+
+        public static Airport NewAirport(Airport airport)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseURL);
+                //HTTP POST
+                var task = client.PostAsJsonAsync<Airport>("Airports", airport);
+                task.Wait();
+
+                var rs = task.Result;
+                if (rs.IsSuccessStatusCode)
+                {
+                    var readTask = rs.Content.ReadAsAsync<Airport>();
+                    readTask.Wait();
+                    return readTask.Result;
+                }
+            }
+            return null;
         }
     }
 }
