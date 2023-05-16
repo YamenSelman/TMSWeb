@@ -149,7 +149,6 @@
     <Content Include="img\Front.png" />
     <Content Include="Register.aspx" />
     <Content Include="RegisterSuccess.aspx" />
-    <Content Include="RoomReservation.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -304,13 +303,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Lang-AR.resx</DependentUpon>
     </Compile>
-    <Compile Include="RoomReservation.aspx.cs">
-      <DependentUpon>RoomReservation.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="RoomReservation.aspx.designer.cs">
-      <DependentUpon>RoomReservation.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -403,7 +395,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:61865/</IISUrl>
+          <IISUrl>http://localhost:54401/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

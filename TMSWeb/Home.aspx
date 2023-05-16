@@ -22,11 +22,13 @@
                 </div>
 
 
-                <div class="text-center text-lg-start mt-4 pt-2">
-                    <asp:Button ID="loginBtn" runat="server" Text="دخول" OnClick="loginBtn_Click" type="button" class="btn btn-outline-success fw-bold shadow-lg"
-                        Style="padding-left: 2.5rem; padding-right: 2.5rem;" />
-                    <a href="Register.aspx" class="btn btn-outline-light fw-bold shadow-lg"
-                        style="padding-left: 2.5rem; padding-right: 2.5rem;">حساب جديد</a>
+                <div class="text-center text-lg-start row">
+                    <div class="col-6">
+                        <asp:Button ID="loginBtn" runat="server" Text="دخول" OnClick="loginBtn_Click" type="button" class="w-100 btn btn-outline-success fw-bold shadow-lg" />
+                    </div>
+                    <div class="col-6">
+                        <a href="Register.aspx" class="btn btn-outline-light fw-bold shadow-lg w-100">حساب جديد</a>
+                    </div>
                 </div>
 
                 <div class="text-center text-lg-end mt-2 pt-2 text-danger fw-bold">
