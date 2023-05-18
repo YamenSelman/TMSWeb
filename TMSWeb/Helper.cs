@@ -45,7 +45,7 @@ namespace TMSWeb
                     var readTask = rs.Content.ReadAsAsync<User[]>();
                     readTask.Wait();
 
-                    result =  readTask.Result.ToList(); 
+                    result = readTask.Result.ToList();
                 }
             }
             return result;
@@ -281,8 +281,8 @@ namespace TMSWeb
                 }
             }
             return null;
-        }        
-        
+        }
+
         public static CarCompany NewCarCompany(CarCompany company)
         {
             using (var client = new HttpClient())
@@ -318,6 +318,29 @@ namespace TMSWeb
                 {
 
                     var readTask = rs.Content.ReadAsAsync<User>();
+                    readTask.Wait();
+
+                    result = readTask.Result;
+                }
+            }
+            return result;
+        }
+
+        public static HotelRoom getRoom(int id)
+        {
+            HotelRoom result = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseURL);
+                //HTTP GET
+                var task = client.GetAsync($"hotelrooms/{id}");
+                task.Wait();
+
+                var rs = task.Result;
+                if (rs.IsSuccessStatusCode)
+                {
+
+                    var readTask = rs.Content.ReadAsAsync<HotelRoom>();
                     readTask.Wait();
 
                     result = readTask.Result;
@@ -414,6 +437,11 @@ namespace TMSWeb
                 }
             }
             return null;
+        }
+
+        internal static object getHotelRoom(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -32,24 +32,14 @@ namespace TMSWeb
             }
         }
 
-        protected void hotelsGrid_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //Page_Load(null, null);
-        }
-
         protected void rlb_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void hlb_Click(object sender, EventArgs e)
         {
             String IDP = ((LinkButton)sender).CommandArgument.ToString();
             int id;
             if (Int32.TryParse(IDP, out id))
             {
-                selectedHotel = hotels.Where(h => h.Id.Equals(id)).FirstOrDefault();
-                if (selectedHotel != null)
+                selectedRoom = Helper.getRoom(id);
+                if (selectedRoom != null)
                 {
                     List<HotelRoom> rooms = Helper.getHotelRooms(id);
                     if (rooms.Count > 0)
@@ -61,11 +51,22 @@ namespace TMSWeb
                     else
                     {
                         roomsDiv.Visible = false;
+                        reservationDiv.Visible = false;
                     }
 
                 }
                 return;
             }
+        }
+
+        protected void hlb_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        protected void confirmRes_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
