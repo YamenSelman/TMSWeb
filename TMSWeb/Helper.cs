@@ -11,8 +11,8 @@ namespace TMSWeb
 {
     public static class Helper
     {
-        private static string BaseURL = "http://mayanahat23-001-site1.ftempurl.com/api/";
-        //private static string BaseURL = "http://localhost:58608/api/";
+        //private static string BaseURL = "http://mayanahat23-001-site1.ftempurl.com/api/";
+        private static string BaseURL = "http://localhost:61860/api/";
         public static List<string> Cities = new List<string> { "Damascus", "Aleppo", "Homs", "Hama", "Swaida", "Lattakia", "Tartous", "Daraa", "Derazzor", "Hasaka", "Qamshly", "Idleb", "Raqqa", "Beirut", "Baghdad", "Amman", "Istanbul", "Abudabi", "Cairo", "Alkhartoum", "Tunis", "Algeria", "Rabat", "Rome", "Paris", "Washington", "Berlin", "Londno", "Tokyo", "Shangahai", "Moscow" };
 
         public static string Hash(string rawData)
@@ -442,6 +442,31 @@ namespace TMSWeb
         internal static object getHotelRoom(int id)
         {
             throw new NotImplementedException();
+        }
+
+
+        public static List<HotelRoom> getAvailableRooms(int hid,DateTime sdate,DateTime edate,int beds)
+        {
+            List<HotelRoom> result = new List<HotelRoom>();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseURL);
+                //HTTP GET
+                var task = client.GetAsync($"hotelrooms/getavailable/{hid}/{sdate.ToString("MM-dd-yyyy")}/{edate.ToString("MM-dd-yyyy")}/{beds}");
+                task.Wait();
+
+                var rs = task.Result;
+                if (rs.IsSuccessStatusCode)
+                {
+
+                    var readTask = rs.Content.ReadAsAsync<HotelRoom[]>();
+                    readTask.Wait();
+
+                    result = readTask.Result.ToList();
+                    return result;
+                }
+            }
+            return result;
         }
     }
 }

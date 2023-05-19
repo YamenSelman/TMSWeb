@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="HotelReservation.aspx.cs" Inherits="TMSWeb.HotelReservation" %>
+﻿<%@ Page Title="Hotel Reservation" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="HotelReservation.aspx.cs" Inherits="TMSWeb.HotelReservation" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -18,17 +18,23 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col-3">
-                            <asp:DropDownList ID="cityDD" runat="server" CssClass="form-control">
+                            <asp:DropDownList ID="cityDD" runat="server" CssClass="form-control" OnSelectedIndexChanged="cityDD_SelectedIndexChanged" AutoPostBack="true">
                             </asp:DropDownList>
                         </div>
                         <div class="col-3">
-                            <asp:TextBox ID="sdate" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="sdate" TextMode="Date" CssClass="form-control" runat="server" OnTextChanged="getRooms" AutoPostBack="true"></asp:TextBox>
                         </div>
                         <div class="col-3">
-                            <asp:TextBox ID="edate" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="edate" TextMode="Date" CssClass="form-control" runat="server" OnTextChanged="getRooms" AutoPostBack="true"></asp:TextBox>
                         </div>
                         <div class="col-3">
-                            <asp:TextBox ID="roomcount" runat="server"></asp:TextBox>
+                            <asp:DropDownList ID="beds" runat="server" CssClass="form-control" OnSelectedIndexChanged="getRooms" AutoPostBack="true">
+                                <asp:ListItem Value ="0" Text="All"></asp:ListItem>
+                                <asp:ListItem Value ="1"></asp:ListItem>
+                                <asp:ListItem Value ="2"></asp:ListItem>
+                                <asp:ListItem Value ="3"></asp:ListItem>
+                                <asp:ListItem Value ="4"></asp:ListItem>
+                            </asp:DropDownList>
                         </div>
                     </div>
                 </div>
@@ -76,6 +82,11 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
+            </div>
+            <div class="table-responsive" id="resDiv" runat="server" visible="false">
+                                <div class="text-center bg-info rounded-3 bg-opacity-50 text-white p-4">
+                    <h4>تفاصيل الحجز</h4>
+                </div>
             </div>
         </div>
     </div>

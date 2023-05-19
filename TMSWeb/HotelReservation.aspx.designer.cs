@@ -42,13 +42,13 @@ namespace TMSWeb
         protected global::System.Web.UI.WebControls.TextBox edate;
 
         /// <summary>
-        /// roomcount control.
+        /// beds control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox roomcount;
+        protected global::System.Web.UI.WebControls.DropDownList beds;
 
         /// <summary>
         /// hotelsGrid control.
@@ -76,5 +76,14 @@ namespace TMSWeb
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView roomsGrid;
+
+        /// <summary>
+        /// resDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl resDiv;
     }
 }

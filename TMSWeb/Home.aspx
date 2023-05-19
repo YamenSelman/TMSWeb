@@ -13,12 +13,12 @@
 
                 <div class="form-outline mb-4">
                     <label class="form-label fw-bold" for="username">اسم المستخدم</label>
-                    <asp:TextBox type="text" ID="username" runat="server" class="form-control form-control-lg" />
+                    <asp:TextBox type="text" ID="username" runat="server" class="form-control form-control-lg" value="yamen"/>
                 </div>
 
                 <div class="form-outline mb-3">
                     <label class="form-label fw-bold" for="password">كلمة المرور</label>
-                    <asp:TextBox type="password" ID="password" runat="server" class="form-control form-control-lg" />
+                    <asp:TextBox type="password" ID="password" runat="server" class="form-control form-control-lg" value="111"/>
                 </div>
 
 
