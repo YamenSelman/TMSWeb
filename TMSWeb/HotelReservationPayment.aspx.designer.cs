@@ -11,34 +11,52 @@ namespace TMSWeb
 {
 
 
-    public partial class UserPage
+    public partial class HotelReservationPayment
     {
 
         /// <summary>
-        /// logoutBtn control.
+        /// resDiv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton logoutBtn;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl resDiv;
 
         /// <summary>
-        /// companiesDiv control.
+        /// sum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl companiesDiv;
+        protected global::System.Web.UI.WebControls.Label sum;
 
         /// <summary>
-        /// companies control.
+        /// pass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl companies;
+        protected global::System.Web.UI.WebControls.TextBox pass;
+
+        /// <summary>
+        /// ErrorLBL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ErrorLBL;
+
+        /// <summary>
+        /// confirmRes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button confirmRes;
     }
 }

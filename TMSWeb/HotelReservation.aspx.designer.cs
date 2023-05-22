@@ -51,13 +51,67 @@ namespace TMSWeb
         protected global::System.Web.UI.WebControls.DropDownList beds;
 
         /// <summary>
-        /// hotelsGrid control.
+        /// ErrorLBL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView hotelsGrid;
+        protected global::System.Web.UI.WebControls.Label ErrorLBL;
+
+        /// <summary>
+        /// resDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl resDiv;
+
+        /// <summary>
+        /// reshotel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label reshotel;
+
+        /// <summary>
+        /// resroom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label resroom;
+
+        /// <summary>
+        /// resperiod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label resperiod;
+
+        /// <summary>
+        /// resprice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label resprice;
+
+        /// <summary>
+        /// confirmRes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button confirmRes;
 
         /// <summary>
         /// roomsDiv control.
@@ -78,12 +132,12 @@ namespace TMSWeb
         protected global::System.Web.UI.WebControls.GridView roomsGrid;
 
         /// <summary>
-        /// resDiv control.
+        /// hotelsGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl resDiv;
+        protected global::System.Web.UI.WebControls.GridView hotelsGrid;
     }
 }

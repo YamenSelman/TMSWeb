@@ -13,22 +13,18 @@
 
                 <div class="form-outline mb-4">
                     <label class="form-label fw-bold" for="username">اسم المستخدم</label>
-                    <asp:TextBox type="text" ID="username" runat="server" class="form-control form-control-lg" value="yamen"/>
+                    <asp:TextBox type="text" ID="username" runat="server" class="form-control form-control-lg" value="sss" />
                 </div>
 
                 <div class="form-outline mb-3">
                     <label class="form-label fw-bold" for="password">كلمة المرور</label>
-                    <asp:TextBox type="password" ID="password" runat="server" class="form-control form-control-lg" value="111"/>
+                    <asp:TextBox type="password" ID="password" runat="server" class="form-control form-control-lg" value="111" />
                 </div>
 
 
-                <div class="text-center text-lg-start row">
-                    <div class="col-6">
-                        <asp:Button ID="loginBtn" runat="server" Text="دخول" OnClick="loginBtn_Click" type="button" class="w-100 btn btn-outline-success fw-bold shadow-lg" />
-                    </div>
-                    <div class="col-6">
-                        <a href="Register.aspx" class="btn btn-outline-light fw-bold shadow-lg w-100">حساب جديد</a>
-                    </div>
+                <div class="btn-group-lg mt-4">
+                    <asp:Button ID="loginBtn" runat="server" Text="دخول" OnClick="loginBtn_Click" type="button" class="w-100 btn btn-lg btn-outline-success fw-bold shadow-lg" />
+                    <a href="Register.aspx" class="mt-2 btn btn-outline-light fw-bold shadow-lg w-100 btn-lg">حساب جديد</a>
                 </div>
 
                 <div class="text-center text-lg-end mt-2 pt-2 text-danger fw-bold">
@@ -43,9 +39,9 @@
 
                 </div>
 
-                <div class="text-center text-lg-start mt-4 pt-2">
-                    <asp:Button ID="LogoutBtn" runat="server" Text="تسجيل خروج" OnClick="logout" type="button" class="btn btn-outline-dark"
-                        Style="padding-left: 2.5rem; padding-right: 2.5rem;" />
+                <div class="btn-group-lg mt-4">
+                    <asp:Button ID="PanelBtn" runat="server" Text="لوحة التحكم" OnClick="PanelBtn_Click" type="button" class="w-100 btn btn-lg btn-outline-primary fw-bold shadow-lg" />
+                    <asp:Button ID="LogoutBtn" runat="server" Text="تسجيل خروج" OnClick="logout" type="button" class="mt-2 w-100 btn btn-lg btn-outline-dark fw-bold shadow-lg" />
                 </div>
 
             </div>

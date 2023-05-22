@@ -18,7 +18,7 @@ namespace TMSWeb
             }
             else
             {
-                flightCompanyGrid.DataSource = Helper.getAllCarCompanies();
+                flightCompanyGrid.DataSource = Helper.getAllFlightCompanies();
                 flightCompanyGrid.DataBind();
             }
         }

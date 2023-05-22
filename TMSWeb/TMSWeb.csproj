@@ -116,6 +116,8 @@
     <Content Include="Administration.aspx" />
     <Content Include="AirportManager.aspx" />
     <Content Include="CarCompanyManager.aspx" />
+    <Content Include="CarReservation.aspx" />
+    <Content Include="CarReservationPayment.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -124,6 +126,7 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="DeleteAirport.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="FlightCompanyManager.aspx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -145,8 +148,13 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Home.aspx" />
     <Content Include="HotelReservation.aspx" />
+    <Content Include="HotelReservationPayment.aspx" />
     <Content Include="img\Bg.png" />
+    <Content Include="img\carpay.png" />
+    <Content Include="img\epay.png" />
     <Content Include="img\Front.png" />
+    <Content Include="img\hotelpay.png" />
+    <Content Include="ManageFlightCompany.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="RegisterSuccess.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -240,12 +248,33 @@
     <Compile Include="CarCompanyManager.aspx.designer.cs">
       <DependentUpon>CarCompanyManager.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CarReservation.aspx.cs">
+      <DependentUpon>CarReservation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarReservation.aspx.designer.cs">
+      <DependentUpon>CarReservation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarReservationPayment.aspx.cs">
+      <DependentUpon>CarReservationPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarReservationPayment.aspx.designer.cs">
+      <DependentUpon>CarReservationPayment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteAirport.aspx.cs">
+      <DependentUpon>DeleteAirport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DeleteAirport.aspx.designer.cs">
+      <DependentUpon>DeleteAirport.aspx</DependentUpon>
     </Compile>
     <Compile Include="FlightCompanyManager.aspx.cs">
       <DependentUpon>FlightCompanyManager.aspx</DependentUpon>
@@ -271,6 +300,20 @@
     </Compile>
     <Compile Include="HotelReservation.aspx.designer.cs">
       <DependentUpon>HotelReservation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HotelReservationPayment.aspx.cs">
+      <DependentUpon>HotelReservationPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HotelReservationPayment.aspx.designer.cs">
+      <DependentUpon>HotelReservationPayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManageFlightCompany.aspx.cs">
+      <DependentUpon>ManageFlightCompany.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageFlightCompany.aspx.designer.cs">
+      <DependentUpon>ManageFlightCompany.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Airport.cs" />
     <Compile Include="Models\Car.cs" />
@@ -395,7 +438,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:54401/</IISUrl>
+          <IISUrl>http://localhost:61207/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

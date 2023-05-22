@@ -61,8 +61,6 @@
                             </Columns>
                         </asp:GridView>
 
-
-
                         <div class="btn-group-lg p-2 text-center">
                             <asp:Button ID="roomAddBtn" runat="server" Text="إضافة غرفة" OnClick="roomAddBtn_Click" CssClass="btn btn-outline-primary w-25 fw-bold shadow-lg btn-lg" />
                         </div>

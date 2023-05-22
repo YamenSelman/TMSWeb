@@ -11,44 +11,35 @@ namespace TMSWeb
 {
 
 
-    public partial class Home
+    public partial class CarReservation
     {
 
         /// <summary>
-        /// loginDiv control.
+        /// cityDD control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl loginDiv;
+        protected global::System.Web.UI.WebControls.DropDownList cityDD;
 
         /// <summary>
-        /// username control.
+        /// sdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox username;
+        protected global::System.Web.UI.WebControls.TextBox sdate;
 
         /// <summary>
-        /// password control.
+        /// edate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox password;
-
-        /// <summary>
-        /// loginBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button loginBtn;
+        protected global::System.Web.UI.WebControls.TextBox edate;
 
         /// <summary>
         /// ErrorLBL control.
@@ -60,39 +51,84 @@ namespace TMSWeb
         protected global::System.Web.UI.WebControls.Label ErrorLBL;
 
         /// <summary>
-        /// loggedDiv control.
+        /// resDiv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl loggedDiv;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl resDiv;
 
         /// <summary>
-        /// currentUserLBL control.
+        /// rescompany control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl currentUserLBL;
+        protected global::System.Web.UI.WebControls.Label rescompany;
 
         /// <summary>
-        /// PanelBtn control.
+        /// rescar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button PanelBtn;
+        protected global::System.Web.UI.WebControls.Label rescar;
 
         /// <summary>
-        /// LogoutBtn control.
+        /// resperiod control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button LogoutBtn;
+        protected global::System.Web.UI.WebControls.Label resperiod;
+
+        /// <summary>
+        /// resprice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label resprice;
+
+        /// <summary>
+        /// confirmRes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button confirmRes;
+
+        /// <summary>
+        /// carsDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl carsDiv;
+
+        /// <summary>
+        /// carsGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView carsGrid;
+
+        /// <summary>
+        /// companiesGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView companiesGrid;
     }
 }

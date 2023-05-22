@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Security.Cryptography;
+using System.Security.Policy;
 using System.Text;
 using System.Web;
+using System.Web.Services.Description;
+using System.Web.SessionState;
 using TMSAPI.Models;
 
 namespace TMSWeb
@@ -371,6 +374,51 @@ namespace TMSWeb
             }
             return result;
         }
+        
+        public static CarCompany getCarCompany(int id)
+        {
+            CarCompany result = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseURL);
+                //HTTP GET
+                var task = client.GetAsync($"carcompanies/{id}");
+                task.Wait();
+
+                var rs = task.Result;
+                if (rs.IsSuccessStatusCode)
+                {
+
+                    var readTask = rs.Content.ReadAsAsync<CarCompany>();
+                    readTask.Wait();
+
+                    result = readTask.Result;
+                }
+            }
+            return result;
+        }
+        public static FlightCompany getFlightCompany(int id)
+        {
+            FlightCompany result = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseURL);
+                //HTTP GET
+                var task = client.GetAsync($"flightcompanies/{id}");
+                task.Wait();
+
+                var rs = task.Result;
+                if (rs.IsSuccessStatusCode)
+                {
+
+                    var readTask = rs.Content.ReadAsAsync<FlightCompany>();
+                    readTask.Wait();
+
+                    result = readTask.Result;
+                }
+            }
+            return result;
+        }
 
         public static List<HotelRoom> getHotelRooms(int id)
         {
@@ -445,7 +493,7 @@ namespace TMSWeb
         }
 
 
-        public static List<HotelRoom> getAvailableRooms(int hid,DateTime sdate,DateTime edate,int beds)
+        public static List<HotelRoom> getAvailableRooms(int hid, DateTime sdate, DateTime edate, int beds)
         {
             List<HotelRoom> result = new List<HotelRoom>();
             using (var client = new HttpClient())
@@ -464,6 +512,245 @@ namespace TMSWeb
 
                     result = readTask.Result.ToList();
                     return result;
+                }
+            }
+            return result;
+        }
+
+        public static Customer getCurrentCustomer(int uid)
+        {
+            Customer result = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseURL);
+                //HTTP GET
+                var task = client.GetAsync($"customers/byuser/{uid}");
+                task.Wait();
+
+                var rs = task.Result;
+                if (rs.IsSuccessStatusCode)
+                {
+
+                    var readTask = rs.Content.ReadAsAsync<Customer>();
+                    readTask.Wait();
+
+                    result = readTask.Result;
+                }
+            }
+            return result;
+        }
+
+        public static TMSAPI.Models.HotelReservation AddHotelReservation(TMSAPI.Models.HotelReservation hr)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseURL);
+                //HTTP POST
+                var task = client.PostAsJsonAsync<TMSAPI.Models.HotelReservation>("hotelreservations", hr);
+                task.Wait();
+
+                var rs = task.Result;
+                if (rs.IsSuccessStatusCode)
+                {
+                    var readTask = rs.Content.ReadAsAsync<TMSAPI.Models.HotelReservation>();
+                    readTask.Wait();
+                    return readTask.Result;
+                }
+            }
+            return null;
+        }
+
+        public static void Alert(HttpSessionState Session, string message)
+        {
+            Session["alert"] = message;
+        }
+        public static void Alert(HttpSessionState Session, HttpResponse Response)
+        {
+            if (Session["alert"] != null)
+            {
+                Response.Write($"<script>alert('{Session["alert"]}');</script>");
+                Session["alert"] = null;
+            }
+        }
+
+        public static List<Car> getAvailableCars(int cid, DateTime sdate, DateTime edate)
+        {
+            List<Car> result = new List<Car>();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseURL);
+                //HTTP GET
+                var task = client.GetAsync($"cars/getavailable/{cid}/{sdate.ToString("MM-dd-yyyy")}/{edate.ToString("MM-dd-yyyy")}");
+                task.Wait();
+
+                var rs = task.Result;
+                if (rs.IsSuccessStatusCode)
+                {
+
+                    var readTask = rs.Content.ReadAsAsync<Car[]>();
+                    readTask.Wait();
+
+                    result = readTask.Result.ToList();
+                    return result;
+                }
+            }
+            return result;
+        }
+
+        public static Car getCar(int id)
+        {
+            Car result = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseURL);
+                //HTTP GET
+                var task = client.GetAsync($"cars/{id}");
+                task.Wait();
+
+                var rs = task.Result;
+                if (rs.IsSuccessStatusCode)
+                {
+
+                    var readTask = rs.Content.ReadAsAsync<Car>();
+                    readTask.Wait();
+
+                    result = readTask.Result;
+                }
+            }
+            return result;
+        }
+
+        public static TMSAPI.Models.CarReservation AddCarReservation(TMSAPI.Models.CarReservation cr)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseURL);
+                //HTTP POST
+                var task = client.PostAsJsonAsync<TMSAPI.Models.CarReservation>("carreservations", cr);
+                task.Wait();
+
+                var rs = task.Result;
+                if (rs.IsSuccessStatusCode)
+                {
+                    var readTask = rs.Content.ReadAsAsync<TMSAPI.Models.CarReservation>();
+                    readTask.Wait();
+                    return readTask.Result;
+                }
+            }
+            return null;
+        }
+
+        public static List<KeyValuePair<string,int>> getManagedBy(int uid)
+        {
+            List<KeyValuePair<string, int>> result = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseURL);
+                //HTTP GET
+                var task = client.GetAsync($"users/getmanagedby/{uid}");
+                task.Wait();
+
+                var rs = task.Result;
+                if (rs.IsSuccessStatusCode)
+                {
+
+                    var readTask = rs.Content.ReadAsAsync<List<KeyValuePair<string, int>>>();
+                    readTask.Wait();
+
+                    result = readTask.Result;
+                }
+            }
+            return result;
+        }
+
+
+        public static List<Flight> getFlightsByCompany(int cid)
+        {
+            List<Flight> result = new List<Flight>();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseURL);
+                //HTTP GET
+                var task = client.GetAsync($"flights/getFlightsByCompany/{cid}");
+                task.Wait();
+
+                var rs = task.Result;
+                if (rs.IsSuccessStatusCode)
+                {
+
+                    var readTask = rs.Content.ReadAsAsync<List<Flight>> ();
+                    readTask.Wait();
+
+                    if(readTask.Result != null)
+                    {
+                        result = readTask.Result;
+                    }
+                }
+            }
+            return result;
+        }
+
+        public static Flight NewFlight(Flight flight)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseURL);
+                //HTTP POST
+                var task = client.PostAsJsonAsync<Flight>("flights", flight);
+                task.Wait();
+
+                var rs = task.Result;
+                if (rs.IsSuccessStatusCode)
+                {
+                    var readTask = rs.Content.ReadAsAsync<Flight>();
+                    readTask.Wait();
+                    return readTask.Result;
+                }
+            }
+            return null;
+        }
+
+        public static Airport getAirport(int id)
+        {
+            Airport result = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseURL);
+                //HTTP GET
+                var task = client.GetAsync($"airports/{id}");
+                task.Wait();
+
+                var rs = task.Result;
+                if (rs.IsSuccessStatusCode)
+                {
+
+                    var readTask = rs.Content.ReadAsAsync<Airport>();
+                    readTask.Wait();
+
+                    result = readTask.Result;
+                }
+            }
+            return result;
+        }
+
+        internal static Boolean deleteAirport(int id)
+        {
+            bool result = false;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseURL);
+                //HTTP GET
+                var task = client.DeleteAsync($"airports/{id}");
+                task.Wait();
+
+                var rs = task.Result;
+                if (rs.IsSuccessStatusCode)
+                {
+
+                    var readTask = rs.Content.ReadAsAsync<Airport>();
+                    readTask.Wait();
+
+                    result = true;
                 }
             }
             return result;

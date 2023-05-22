@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -26,6 +27,7 @@ namespace TMSWeb
                 {
                     selectedRoom = null;
                     roomsDiv.Visible = false;
+                    resDiv.Visible = false;
                 }
                 getRooms(null,null);
             }
@@ -54,14 +56,20 @@ namespace TMSWeb
 
                 if (!IsPostBack)
                 {
+                    if(Session["error"] != null)
+                    {
+                        ErrorLBL.Text = Session["error"].ToString();
+                        Session["error"] = null;
+                    }
+
                     selectedHotel = null;
                     selectedRoom = null;
 
                     cityDD.DataSource = Helper.Cities;
                     cityDD.DataBind();
 
-                    sdate.Text = DateTime.Now.ToString("yyyy-MM-dd");
-                    edate.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                    sdate.Text = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
+                    edate.Text = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
                 }
 
 
@@ -73,11 +81,26 @@ namespace TMSWeb
 
         public void getRooms(object sender, EventArgs e)
         {
+            resDiv.Visible = false;
             if (selectedHotel != null)
             {
-                roomsGrid.DataSource = Helper.getAvailableRooms(selectedHotel.Id, DateTime.Parse(sdate.Text), DateTime.Parse(edate.Text), Int32.Parse(beds.Text));
-                roomsGrid.DataBind();
-                roomsDiv.Visible = true;
+                roomsDiv.Visible = false;
+                if ((DateTime.Parse(sdate.Text) - DateTime.Parse(edate.Text)).TotalDays > 0)
+                {
+                    ErrorLBL.Text = "خطأ في اختيار التواريخ";
+                }
+                else if ((DateTime.Now - DateTime.Parse(sdate.Text)).TotalDays > 0)
+                {
+                    ErrorLBL.Text = "لا يمكن الحجز بتاريخ سابق";
+                }
+                else
+                {
+                    roomsGrid.DataSource = Helper.getAvailableRooms(selectedHotel.Id, DateTime.Parse(sdate.Text), DateTime.Parse(edate.Text), Int32.Parse(beds.Text));
+                    roomsGrid.DataBind();
+                    roomsDiv.Visible = true;
+                    ErrorLBL.Text = "";
+                }
+
             }
             else
             {
@@ -93,7 +116,12 @@ namespace TMSWeb
                 selectedRoom = Helper.getRoom(id);
                 if(selectedRoom !=null)
                 {
+                    int period = ((int)(DateTime.Parse(edate.Text) - DateTime.Parse(sdate.Text)).TotalDays)+1;
                     resDiv.Visible = true;
+                    reshotel.Text = selectedHotel.Name;
+                    resroom.Text = "رقم " + selectedRoom.Number;
+                    resperiod.Text = period.ToString() + " يوم";
+                    resprice.Text = (period * selectedRoom.Rent).ToString();
                 }
                 else
                 {
@@ -118,7 +146,19 @@ namespace TMSWeb
 
         protected void confirmRes_Click(object sender, EventArgs e)
         {
-
+            TMSAPI.Models.HotelReservation hotelReservation = new TMSAPI.Models.HotelReservation();
+            Customer cust = Helper.getCurrentCustomer(((User)Session["user"]).ID);
+            hotelReservation.CustomerId = cust.Id;
+            hotelReservation.EndDate = DateTime.Parse(edate.Text).Date;
+            hotelReservation.StrartDate = DateTime.Parse(sdate.Text).Date;
+            hotelReservation.HotelRoomId = selectedRoom.Id;
+            hotelReservation.HotelRoom = selectedRoom;
+            hotelReservation.Customer = cust;
+            if(hotelReservation != null)
+            {
+                Session["hotelreservaion"] = hotelReservation;
+                Response.Redirect("HotelReservationPayment.aspx");
+            }
         }
 
         protected void cityDD_SelectedIndexChanged(object sender, EventArgs e)

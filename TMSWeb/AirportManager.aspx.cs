@@ -18,6 +18,7 @@ namespace TMSWeb
             }
             else
             {
+                Helper.Alert(Session, Response);
                 AirportGrid.DataSource = Helper.getAllAirports();
                 AirportGrid.DataBind();
             }

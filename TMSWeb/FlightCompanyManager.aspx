@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container-fluid pt-1 mt-1">
+    <div class="container-fluid pt-1 mt-1"">
         <div class="row fs-5 justify-content-center align-items-center m-5 h-100 rounded-3 bg-black text-white bg-opacity-75 p-3 text-black-75">
             <div class="table-responsive">
                 <div class="text-center bg-info rounded-3 bg-opacity-50 text-white p-4">

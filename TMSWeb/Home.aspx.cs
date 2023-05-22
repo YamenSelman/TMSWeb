@@ -13,6 +13,7 @@ namespace TMSWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Helper.Alert(Session, Response);
             if (Session["user"] != null)
             {
                 loginDiv.Visible = false;
@@ -78,6 +79,26 @@ namespace TMSWeb
         {
             Session["user"] = null;
             Response.Redirect("Home.aspx");
+        }
+
+        protected void PanelBtn_Click(object sender, EventArgs e)
+        {
+            if(Session["user"] != null)
+            {
+                if(((User)Session["user"]).Role.Equals("admin"))
+                {
+                    Response.Redirect("Administration.aspx");
+                }
+                else
+                {
+                    Response.Redirect("UserPage.aspx");
+                }
+            }
+            else
+            {
+                Helper.Alert(Session,"انتهت جلسة العمل .. الرجاء إعادة الدخول");
+                Response.Redirect("Home.aspx");
+            }
         }
     }
 }
